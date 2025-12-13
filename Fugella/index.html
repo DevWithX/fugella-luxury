@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUGELLA - Curated Fashion Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- TOP BANNER -->
+    <div class="top-banner">
+        Free Shipping on Orders Over R3,500 | Authenticated Luxury
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="logo">FUGELLA</div>
+        <div class="nav-center">
+            <a href="#women">Women</a>
+            <a href="#men">Men</a>
+            <a href="#accessories">Accessories</a>
+            <a href="#new">New Arrivals</a>
+            <a href="#sell">Sell</a>
+        </div>
+        <div class="nav-right">
+            <span class="nav-icon" id="searchIcon">🔍</span>
+            <span class="nav-icon" id="accountIcon">👤</span>
+            <div class="nav-right">
+    <span class="nav-icon" id="searchIcon">🔍</span>
+    <span class="nav-icon" id="accountIcon">👤</span>
+    <span class="nav-icon wishlist-nav" id="wishlistIcon">
+        ❤️
+        <span class="wishlist-badge" id="wishlistBadge">0</span>
+    </span>
+    <span class="nav-icon" id="cartIcon">🛍️</span>
+</div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-left"></div>
+        <div class="hero-right">
+            <div class="hero-tag">Spring Collection 2024</div>
+            <h1 class="hero-title">Discover Timeless Luxury</h1>
+            <p class="hero-subtitle">Curated pre-loved designer pieces authenticated and ready for their next chapter. Sustainable fashion without compromise.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" id="shopBtn">Shop Now</button>
+                <button class="btn-secondary" id="sellBtn">Start Selling</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories" id="categories">
+        <div class="section-header">
+            <h2 class="section-title">Shop by Category</h2>
+            <p class="section-subtitle">Explore our carefully curated collections</p>
+        </div>
+        <div class="category-grid">
+            <div class="category-card" data-category="women">
+                <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&h=1000&fit=crop" alt="Women's Fashion">
+                <div class="category-overlay">
+                    <div class="category-name">Women</div>
+                    <div class="category-count">2,847 items</div>
+                </div>
+            </div>
+            <div class="category-card" data-category="men">
+                <img src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=800&h=1000&fit=crop" alt="Men's Fashion">
+                <div class="category-overlay">
+                    <div class="category-name">Men</div>
+                    <div class="category-count">1,523 items</div>
+                </div>
+            </div>
+            <div class="category-card" data-category="accessories">
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&h=1000&fit=crop" alt="Accessories">
+                <div class="category-overlay">
+                    <div class="category-name">Accessories</div>
+                    <div class="category-count">932 items</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="featured" id="products">
+        <div class="section-header">
+            <h2 class="section-title">New Arrivals</h2>
+            <p class="section-subtitle">The latest authenticated luxury pieces</p>
+        </div>
+        <div class="product-grid">
+            
+            <div class="product-card" data-id="1">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=900&fit=crop" alt="Wool Blazer">
+                    <span class="product-badge">New</span>
+                    <button class="wishlist-btn">♡</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">The Row</div>
+                    <div class="product-name">Wool Blazer</div>
+                    <div class="product-price">R16,250</div>
+                    <div class="product-condition">Excellent</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="2">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&h=900&fit=crop" alt="Birkin Bag">
+                    <span class="product-badge gold">Authenticated</span>
+                    <button class="wishlist-btn">♡</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Hermès</div>
+                    <div class="product-name">Birkin 35</div>
+                    <div class="product-price">R227,500</div>
+                    <div class="product-condition">Like New</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="3">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=900&fit=crop" alt="Trench Coat">
+                    <span class="product-badge">New</span>
+                    <button class="wishlist-btn">♡</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Burberry</div>
+                    <div class="product-name">Trench Coat</div>
+                    <div class="product-price">R14,280</div>
+                    <div class="product-condition">Very Good</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="4">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=900&fit=crop" alt="Chelsea Boots">
+                    <button class="wishlist-btn">♡</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Saint Laurent</div>
+                    <div class="product-name">Chelsea Boots</div>
+                    <div class="product-price">R7,730</div>
+                    <div class="product-condition">Excellent</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="5">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600&h=900&fit=crop" alt="Midi Dress">
+                    <span class="product-badge">New</span>
+                    <button class="wishlist-btn">♡</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Reformation</div>
+                    <div class="product-name">Linen Midi Dress</div>
+                    <div class="product-price">R2,640</div>
+                    <div class="product-condition">Excellent</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="6">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=900&fit=crop" alt="Cashmere Sweater">
+                    <button class="wishlist-btn">♡</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Loro Piana</div>
+                    <div class="product-name">Cashmere Crew</div>
+                    <div class="product-price">R9,550</div>
+                    <div class="product-condition">Like New</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="7">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1598032895397-b9e7f6d2e742?w=600&h=900&fit=crop" alt="Wide Leg Trousers">
+                    <span class="product-badge">New</span>
+                    <button class="wishlist-btn">♡</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Totême</div>
+                    <div class="product-name">Wide Leg Trousers</div>
+                    <div class="product-price">R3,365</div>
+                    <div class="product-condition">Excellent</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="8">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&h=900&fit=crop" alt="Silk Shirt">
+                    <span class="product-badge gold">Authenticated</span>
+                    <button class="wishlist-btn">♡</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Equipment</div>
+                    <div class="product-name">Silk Signature Shirt</div>
+                    <div class="product-price">R2,275</div>
+                    <div class="product-condition">Very Good</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works">
+        <div class="section-header">
+            <h2 class="section-title">How Fugella Works</h2>
+            <p class="section-subtitle">Your trusted marketplace for authentic luxury</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3 class="step-title">Browse & Discover</h3>
+                <p class="step-description">Explore thousands of authenticated designer pieces from trusted sellers. Every item is verified for authenticity.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3 class="step-title">Buy with Confidence</h3>
+                <p class="step-description">Secure checkout with buyer protection. Free shipping on orders over R3,500. Easy returns within 14 days.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3 class="step-title">Sell Your Luxury</h3>
+                <p class="step-description">List your designer items in minutes. We handle authentication, shipping, and payments. You keep 85% of the sale.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <h2>Start Your Sustainable Style Journey</h2>
+        <p>Join thousands of fashion lovers buying and selling authenticated luxury</p>
+        <button class="btn-primary" id="ctaBannerBtn">Create Free Account</button>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <div class="footer-brand">FUGELLA</div>
+                <p class="footer-tagline">The world's most trusted marketplace for authenticated pre-loved luxury fashion. Sustainable style without compromise.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#women">Women</a></li>
+                    <li><a href="#men">Men</a></li>
+                    <li><a href="#accessories">Accessories</a></li>
+                    <li><a href="#new">New Arrivals</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#authentication">Authentication</a></li>
+                    <li><a href="#sustainability">Sustainability</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#help">Help Center</a></li>
+                    <li><a href="#shipping">Shipping</a></li>
+                    <li><a href="#returns">Returns</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem;">Get exclusive access to new arrivals and special offers</p>
+                <input type="email" class="newsletter-input" placeholder="Your email address">
+                <button class="newsletter-btn">Subscribe</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Fugella. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
