@@ -5,7 +5,7 @@
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://YOUR-USERNAME.github.io/fugella)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-![FUGELLA Preview](https://via.placeholder.com/1200x600/0a0a0a/c9a961?text=FUGELLA+Marketplace)
+![FUGELLA Preview](https://via.placeholder.com/1200x600/0a0a0a/c9a961?text=FUGELLA+Marketplace) [INACTIVE]
 
 ## 🌟 About
 
@@ -172,5 +172,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **⭐ If you like this project, give it a star!**
+
 
 Made with ❤️ and lots of ☕
