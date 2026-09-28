@@ -838,3 +838,15 @@ body {
         margin-top: 1rem;
     }
 }
+/* Native dialog supplies focus trapping, Escape and focus restoration. */
+.wishlist-modal { border: 0; padding: 0; width: min(90vw, 800px); max-height: 85vh; background: white; }
+.wishlist-modal:not([open]) { display: none; }
+.wishlist-modal[open] { display: block; opacity: 1; pointer-events: auto; }
+.wishlist-modal::backdrop { background: rgba(0,0,0,.8); }
+.wishlist-modal .wishlist-content { width: 100%; max-height: none; transform: none; }
+button.nav-icon { border: 0; background: transparent; font: inherit; cursor: pointer; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #8a681a; outline-offset: 4px; }
+#productSearch { display: block; width: min(100%, 34rem); padding: .8rem 1rem; margin: .6rem 0; border: 1px solid #999; font: inherit; }
+#searchStatus { margin-bottom: 1.5rem; }
+.product-card[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }

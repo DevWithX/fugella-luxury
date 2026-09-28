@@ -5,17 +5,17 @@ console.log('🛍️ FUGELLA Marketplace Loaded');
 let wishlist = [];
 
 document.addEventListener('DOMContentLoaded', function() {
-    
+
     // Load wishlist from localStorage on page load
     loadWishlist();
-    
+
     // ===== SMOOTH SCROLLING =====
     const shopBtn = document.getElementById('shopBtn');
     const ctaBannerBtn = document.getElementById('ctaBannerBtn');
-    
+
     if (shopBtn) {
         shopBtn.addEventListener('click', function() {
-            document.getElementById('products').scrollIntoView({ 
+            document.getElementById('products').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
@@ -42,15 +42,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartIcon = document.getElementById('cartIcon');
     const wishlistIcon = document.getElementById('wishlistIcon');
 
-    if (searchIcon) {
-        searchIcon.addEventListener('click', function() {
-            const query = prompt('🔍 Search for brands, items, or categories:');
-            if (query) {
-                console.log('Search query:', query);
-                alert(`Searching for "${query}"... Search feature coming soon!`);
-            }
+    const searchInput = document.getElementById('productSearch');
+    const filterProducts = () => {
+        const query = searchInput.value.trim().toLowerCase();
+        let count = 0;
+        document.querySelectorAll('.product-card').forEach(card => {
+            const matches = `${card.querySelector('.product-brand').textContent} ${card.querySelector('.product-name').textContent}`.toLowerCase().includes(query);
+            card.hidden = !matches;
+            if (matches) count++;
         });
-    }
+        document.getElementById('searchStatus').textContent = count ? `${count} ${count === 1 ? "piece" : "pieces"} found` : 'No matching pieces. Try another brand or product name.';
+    };
+    searchInput.addEventListener('input', filterProducts);
+    if (searchIcon) searchIcon.addEventListener('click', () => {
+        searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        searchInput.focus({ preventScroll: true });
+    });
+    filterProducts();
 
     if (accountIcon) {
         accountIcon.addEventListener('click', function() {
@@ -89,12 +97,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target.classList.contains('wishlist-btn')) {
                 return;
             }
-            
+
             const productId = this.getAttribute('data-id');
             const brand = this.querySelector('.product-brand').textContent;
             const name = this.querySelector('.product-name').textContent;
             const price = this.querySelector('.product-price').textContent;
-            
+
             console.log('Product clicked:', { productId, brand, name, price });
             alert(`${brand} - ${name}\nPrice: ${price}\n\n✨ Product detail page coming soon!`);
         });
@@ -115,14 +123,14 @@ document.addEventListener('DOMContentLoaded', function() {
     wishlistButtons.forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation(); // Prevent product card click
-            
+
             const productCard = this.closest('.product-card');
             const productId = productCard.getAttribute('data-id');
             const brand = productCard.querySelector('.product-brand').textContent;
             const name = productCard.querySelector('.product-name').textContent;
             const price = productCard.querySelector('.product-price').textContent;
             const imageSrc = productCard.querySelector('.product-image img').src;
-            
+
             toggleWishlist(productId, brand, name, price, imageSrc, this);
         });
     });
@@ -134,19 +142,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (newsletterBtn && newsletterInput) {
         newsletterBtn.addEventListener('click', function() {
             const email = newsletterInput.value.trim();
-            
+
             if (!email) {
                 alert('⚠️ Please enter your email address');
                 return;
             }
-            
+
             if (!isValidEmail(email)) {
                 alert('⚠️ Please enter a valid email address');
                 return;
             }
-            
-            console.log('Newsletter subscription:', email);
-            showNotification('🎉 Thanks for subscribing! Check your inbox for exclusive offers.');
+
+            // Demo only: do not collect or transmit the entered address.
+            showNotification('Demo only — no subscription was created and no email was sent.');
             newsletterInput.value = '';
         });
 
@@ -164,16 +172,16 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            
+
             if (targetId === '#sell') {
                 alert('📦 Seller dashboard coming soon!');
                 return;
             }
-            
+
             // Smooth scroll to section if it exists
             const targetSection = document.querySelector(targetId);
             if (targetSection) {
-                targetSection.scrollIntoView({ 
+                targetSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
@@ -232,22 +240,29 @@ document.addEventListener('DOMContentLoaded', function() {
 // ===== WISHLIST FUNCTIONS =====
 
 function loadWishlist() {
-    const saved = localStorage.getItem('fugellaWishlist');
-    if (saved) {
-        wishlist = JSON.parse(saved);
-        console.log('Loaded wishlist from storage:', wishlist);
-        updateWishlistUI();
-    }
+    try {
+        const saved = JSON.parse(localStorage.getItem('fugellaWishlist') || '[]');
+        const ids = new Set(Array.isArray(saved) ? saved.map(item => item?.id) : []);
+        // Restore only known catalog items, never HTML or URLs from storage.
+        wishlist = Array.from(document.querySelectorAll('.product-card')).filter(card => ids.has(card.dataset.id)).map(card => ({
+            id: card.dataset.id,
+            brand: card.querySelector('.product-brand').textContent,
+            name: card.querySelector('.product-name').textContent,
+            price: card.querySelector('.product-price').textContent,
+            image: card.querySelector('.product-image img').src,
+        }));
+    } catch { wishlist = []; }
+    updateWishlistUI();
 }
 
 function saveWishlist() {
-    localStorage.setItem('fugellaWishlist', JSON.stringify(wishlist));
-    console.log('Wishlist saved to storage');
+    try { localStorage.setItem('fugellaWishlist', JSON.stringify(wishlist)); }
+    catch { showNotification('Wishlist is available for this visit; browser storage is unavailable.'); }
 }
 
 function toggleWishlist(id, brand, name, price, image, btnElement) {
     const existingIndex = wishlist.findIndex(item => item.id === id);
-    
+
     if (existingIndex !== -1) {
         // Remove from wishlist
         wishlist.splice(existingIndex, 1);
@@ -261,7 +276,7 @@ function toggleWishlist(id, brand, name, price, image, btnElement) {
         btnElement.textContent = '♥';
         showNotification(`${brand} ${name} added to wishlist!`);
     }
-    
+
     saveWishlist();
     updateWishlistUI();
 }
@@ -269,7 +284,7 @@ function toggleWishlist(id, brand, name, price, image, btnElement) {
 function updateWishlistUI() {
     const badge = document.getElementById('wishlistBadge');
     const count = wishlist.length;
-    
+
     if (badge) {
         badge.textContent = count;
         if (count > 0) {
@@ -278,14 +293,16 @@ function updateWishlistUI() {
             badge.classList.remove('active');
         }
     }
-    
+
     // Update all wishlist button states
     const allButtons = document.querySelectorAll('.wishlist-btn');
     allButtons.forEach(btn => {
         const productCard = btn.closest('.product-card');
         const productId = productCard.getAttribute('data-id');
         const isInWishlist = wishlist.some(item => item.id === productId);
-        
+        btn.setAttribute('aria-pressed', String(isInWishlist));
+        btn.setAttribute('aria-label', `${isInWishlist ? 'Remove from' : 'Add to'} wishlist: ${productCard.querySelector('.product-name').textContent}`);
+
         if (isInWishlist) {
             btn.classList.add('active');
             btn.textContent = '♥';
@@ -303,38 +320,40 @@ function openWishlistModal() {
         modal = createWishlistModal();
         document.body.appendChild(modal);
     }
-    
+
     // Populate with current wishlist
     renderWishlistItems();
-    
+
     // Show modal
-    setTimeout(() => modal.classList.add('active'), 10);
+    modal.showModal();
+    modal.classList.add('active');
 }
 
 function createWishlistModal() {
-    const modal = document.createElement('div');
+    const modal = document.createElement('dialog');
     modal.className = 'wishlist-modal';
+    modal.setAttribute('aria-labelledby', 'wishlistTitle');
     modal.innerHTML = `
         <div class="wishlist-content">
             <div class="wishlist-header">
-                <h2>MY WISHLIST</h2>
-                <button class="close-modal">×</button>
+                <h2 id="wishlistTitle">MY WISHLIST</h2>
+                <button class="close-modal" aria-label="Close wishlist">×</button>
             </div>
             <div class="wishlist-items" id="wishlistItemsContainer"></div>
         </div>
     `;
-    
+
     // Close modal on backdrop click
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeWishlistModal();
         }
     });
-    
+
     // Close button
     const closeBtn = modal.querySelector('.close-modal');
     closeBtn.addEventListener('click', closeWishlistModal);
-    
+
     return modal;
 }
 
@@ -342,12 +361,13 @@ function closeWishlistModal() {
     const modal = document.querySelector('.wishlist-modal');
     if (modal) {
         modal.classList.remove('active');
+        modal.close();
     }
 }
 
 function renderWishlistItems() {
     const container = document.getElementById('wishlistItemsContainer');
-    
+
     if (wishlist.length === 0) {
         container.innerHTML = `
             <div class="empty-wishlist">
@@ -358,18 +378,20 @@ function renderWishlistItems() {
         `;
         return;
     }
-    
-    container.innerHTML = wishlist.map(item => `
-        <div class="wishlist-item" data-id="${item.id}">
-            <img src="${item.image}" alt="${item.name}" class="wishlist-item-image">
-            <div class="wishlist-item-info">
-                <div class="wishlist-item-brand">${item.brand}</div>
-                <div class="wishlist-item-name">${item.name}</div>
-                <div class="wishlist-item-price">${item.price}</div>
-            </div>
-            <button class="remove-wishlist-btn" onclick="removeFromWishlist('${item.id}')">Remove</button>
-        </div>
-    `).join('');
+
+    container.replaceChildren();
+    for (const item of wishlist) {
+        const row = document.createElement('div'); row.className = 'wishlist-item';
+        const image = document.createElement('img'); image.src = item.image; image.alt = item.name; image.className = 'wishlist-item-image';
+        const info = document.createElement('div'); info.className = 'wishlist-item-info';
+        for (const field of ['brand', 'name', 'price']) {
+            const text = document.createElement('div'); text.className = `wishlist-item-${field}`; text.textContent = item[field]; info.appendChild(text);
+        }
+        const remove = document.createElement('button'); remove.className = 'remove-wishlist-btn'; remove.textContent = 'Remove';
+        remove.setAttribute('aria-label', `Remove ${item.name} from wishlist`);
+        remove.addEventListener('click', () => { removeFromWishlist(item.id); document.querySelector('.close-modal').focus(); });
+        row.append(image, info, remove); container.appendChild(row);
+    }
 }
 
 function removeFromWishlist(id) {
@@ -404,9 +426,9 @@ function showNotification(message) {
         animation: slideIn 0.3s ease;
         box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     // Remove after 3 seconds
     setTimeout(() => {
         notification.style.animation = 'slideOut 0.3s ease';
@@ -429,7 +451,7 @@ style.textContent = `
             opacity: 1;
         }
     }
-    
+
     @keyframes slideOut {
         from {
             transform: translateX(0);

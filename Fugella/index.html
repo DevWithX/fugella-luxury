@@ -9,7 +9,7 @@
 <body>
     <!-- TOP BANNER -->
     <div class="top-banner">
-        Free Shipping on Orders Over R3,500 | Authenticated Luxury
+        Portfolio demo · Sample products · No purchases or subscriptions
     </div>
 
     <!-- NAVIGATION -->
@@ -23,17 +23,10 @@
             <a href="#sell">Sell</a>
         </div>
         <div class="nav-right">
-            <span class="nav-icon" id="searchIcon">🔍</span>
-            <span class="nav-icon" id="accountIcon">👤</span>
-            <div class="nav-right">
-    <span class="nav-icon" id="searchIcon">🔍</span>
-    <span class="nav-icon" id="accountIcon">👤</span>
-    <span class="nav-icon wishlist-nav" id="wishlistIcon">
-        ❤️
-        <span class="wishlist-badge" id="wishlistBadge">0</span>
-    </span>
-    <span class="nav-icon" id="cartIcon">🛍️</span>
-</div>
+            <button type="button" class="nav-icon" id="searchIcon" aria-label="Search products">🔍</button>
+            <button type="button" class="nav-icon" id="accountIcon" aria-label="Account demo">👤</button>
+            <button type="button" class="nav-icon wishlist-nav" id="wishlistIcon" aria-label="Open wishlist">♡<span class="wishlist-badge" id="wishlistBadge">0</span></button>
+            <button type="button" class="nav-icon" id="cartIcon" aria-label="Cart demo">🛍️</button>
         </div>
     </nav>
 
@@ -41,9 +34,9 @@
     <section class="hero">
         <div class="hero-left"></div>
         <div class="hero-right">
-            <div class="hero-tag">Spring Collection 2024</div>
+            <div class="hero-tag">Storefront Concept</div>
             <h1 class="hero-title">Discover Timeless Luxury</h1>
-            <p class="hero-subtitle">Curated pre-loved designer pieces authenticated and ready for their next chapter. Sustainable fashion without compromise.</p>
+            <p class="hero-subtitle">Explore a sample collection inspired by pre-loved designer fashion.</p>
             <div class="hero-buttons">
                 <button class="btn-primary" id="shopBtn">Shop Now</button>
                 <button class="btn-secondary" id="sellBtn">Start Selling</button>
@@ -62,21 +55,21 @@
                 <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&h=1000&fit=crop" alt="Women's Fashion">
                 <div class="category-overlay">
                     <div class="category-name">Women</div>
-                    <div class="category-count">2,847 items</div>
+                    <div class="category-count">Sample collection</div>
                 </div>
             </div>
             <div class="category-card" data-category="men">
                 <img src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=800&h=1000&fit=crop" alt="Men's Fashion">
                 <div class="category-overlay">
                     <div class="category-name">Men</div>
-                    <div class="category-count">1,523 items</div>
+                    <div class="category-count">Sample collection</div>
                 </div>
             </div>
             <div class="category-card" data-category="accessories">
                 <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&h=1000&fit=crop" alt="Accessories">
                 <div class="category-overlay">
                     <div class="category-name">Accessories</div>
-                    <div class="category-count">932 items</div>
+                    <div class="category-count">Sample collection</div>
                 </div>
             </div>
         </div>
@@ -84,12 +77,15 @@
 
     <!-- FEATURED PRODUCTS -->
     <section class="featured" id="products">
+        <label for="productSearch">Search the collection</label>
+        <input type="search" id="productSearch" placeholder="Brand or product name" autocomplete="off">
+        <p id="searchStatus" role="status" aria-live="polite"></p>
         <div class="section-header">
             <h2 class="section-title">New Arrivals</h2>
-            <p class="section-subtitle">The latest authenticated luxury pieces</p>
+            <p class="section-subtitle">A sample selection of designer styles</p>
         </div>
         <div class="product-grid">
-            
+
             <div class="product-card" data-id="1">
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=900&fit=crop" alt="Wool Blazer">
@@ -107,7 +103,7 @@
             <div class="product-card" data-id="2">
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&h=900&fit=crop" alt="Birkin Bag">
-                    <span class="product-badge gold">Authenticated</span>
+                    <span class="product-badge gold">Sample piece</span>
                     <button class="wishlist-btn">♡</button>
                 </div>
                 <div class="product-info">
@@ -189,7 +185,7 @@
             <div class="product-card" data-id="8">
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&h=900&fit=crop" alt="Silk Shirt">
-                    <span class="product-badge gold">Authenticated</span>
+                    <span class="product-badge gold">Sample piece</span>
                     <button class="wishlist-btn">♡</button>
                 </div>
                 <div class="product-info">
@@ -207,23 +203,23 @@
     <section class="how-it-works">
         <div class="section-header">
             <h2 class="section-title">How Fugella Works</h2>
-            <p class="section-subtitle">Your trusted marketplace for authentic luxury</p>
+            <p class="section-subtitle">Explore the storefront concept</p>
         </div>
         <div class="steps-grid">
             <div class="step">
                 <div class="step-number">01</div>
                 <h3 class="step-title">Browse & Discover</h3>
-                <p class="step-description">Explore thousands of authenticated designer pieces from trusted sellers. Every item is verified for authenticity.</p>
+                <p class="step-description">Browse the sample collection and search for a favourite brand or product.</p>
             </div>
             <div class="step">
                 <div class="step-number">02</div>
-                <h3 class="step-title">Buy with Confidence</h3>
-                <p class="step-description">Secure checkout with buyer protection. Free shipping on orders over R3,500. Easy returns within 14 days.</p>
+                <h3 class="step-title">Save Your Favourites</h3>
+                <p class="step-description">Add pieces to your wishlist and return to them on this browser. No checkout is available in this demo.</p>
             </div>
             <div class="step">
                 <div class="step-number">03</div>
-                <h3 class="step-title">Sell Your Luxury</h3>
-                <p class="step-description">List your designer items in minutes. We handle authentication, shipping, and payments. You keep 85% of the sale.</p>
+                <h3 class="step-title">A Future Marketplace</h3>
+                <p class="step-description">Seller listings, authentication and payments are future concepts, not services offered by this prototype.</p>
             </div>
         </div>
     </section>
@@ -231,7 +227,7 @@
     <!-- CTA BANNER -->
     <section class="cta-banner">
         <h2>Start Your Sustainable Style Journey</h2>
-        <p>Join thousands of fashion lovers buying and selling authenticated luxury</p>
+        <p>Explore the idea of a second chapter for designer fashion</p>
         <button class="btn-primary" id="ctaBannerBtn">Create Free Account</button>
     </section>
 
@@ -240,7 +236,7 @@
         <div class="footer-grid">
             <div class="footer-section">
                 <div class="footer-brand">FUGELLA</div>
-                <p class="footer-tagline">The world's most trusted marketplace for authenticated pre-loved luxury fashion. Sustainable style without compromise.</p>
+                <p class="footer-tagline">A portfolio concept for browsing pre-loved luxury fashion.</p>
             </div>
             <div class="footer-section">
                 <h4>Shop</h4>
@@ -271,7 +267,7 @@
             </div>
             <div class="footer-section">
                 <h4>Newsletter</h4>
-                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem;">Get exclusive access to new arrivals and special offers</p>
+                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem;">Try the demo form. No subscription is created.</p>
                 <input type="email" class="newsletter-input" placeholder="Your email address">
                 <button class="newsletter-btn">Subscribe</button>
             </div>
